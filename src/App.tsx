@@ -1,4 +1,4 @@
-import { Chart as ChartJS, defaults } from 'chart.js/auto';
+import { defaults } from 'chart.js/auto';
 import { Bar, Doughnut, Line } from 'react-chartjs-2';
 
 import revenueData from './data/revenueData.json';
@@ -11,27 +11,6 @@ defaults.plugins.title.display = true;
 defaults.plugins.title.align = 'start';
 defaults.plugins.title.font.size = 20;
 defaults.plugins.title.color = 'black';
-
-// .App {
-//   height: 100vh;
-//   width: 100%;
-//   display: flex;
-//   flex-direction: row;
-//   align-items: center;
-//   justify-content: center;
-//   align-content: center;
-//   gap: 2vw;
-//   flex-wrap: wrap;
-//   background-color: #ddd;
-// }
-
-// background-color: #efefef;
-//   border-radius: 0.5em;
-//   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-//   padding: 1em;
-
-// width: 92%;
-// height: 20rem;
 
 export const App = () => {
   return (
@@ -122,6 +101,34 @@ export const App = () => {
             plugins: {
               title: {
                 text: 'Revenue Sources',
+              },
+            },
+          }}
+        />
+      </div>
+
+      <div className="rounded-md shadow-md shadow-gray-500/45 p-2 bg-app-rojiso w-[41%] h-80">
+        <Bar
+          data={{
+            labels: sourceData.map((data) => data.label),
+            datasets: [
+              {
+                label: 'Count',
+                data: sourceData.map((data) => data.value),
+                backgroundColor: [
+                  'rgba(43, 63, 229, 0.8)',
+                  'rgba(250, 192, 19, 0.8)',
+                  'rgba(253, 135, 135, 0.8)',
+                ],
+                borderRadius: 5,
+              },
+            ],
+          }}
+          options={{
+            indexAxis: 'y',
+            plugins: {
+              title: {
+                text: 'Revenue Source',
               },
             },
           }}
